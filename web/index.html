@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha Batismal</title>
+  <base href="/">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    #splash {position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font-family:sans-serif}
+    #splash .box{padding:24px;border:1px solid #ddd;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+  </style>
+</head>
+<body>
+  <div id="splash"><div class="box">Carregando app Flutter…</div></div>
+  <script src="flutter.js" defer></script>
+  <script>
+    window.addEventListener('load', function() {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: { serviceWorkerVersion: Date.now().toString() }
+      }).then(function(engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(function(appRunner) {
+        document.getElementById('splash')?.remove();
+        return appRunner.runApp();
+      });
+    });
+  </script>
+</body>
+</html>
